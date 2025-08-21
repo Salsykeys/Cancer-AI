@@ -31,7 +31,14 @@ body {
   scrollbar-color: var(--scrollbar-color) transparent;
 }
 
-.container :where(.app-header, .suggestions, .message , .prompt-wrapper, .disclaimer-text){
+.container
+  :where(
+    .app-header,
+    .suggestions,
+    .message,
+    .prompt-wrapper,
+    .disclaimer-text
+  ) {
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
@@ -68,8 +75,8 @@ body {
   scrollbar-width: none;
 }
 
-.container :is(.app-header, .suggestions){
-  display:none;
+.container :is(.app-header, .suggestions) {
+  display: none;
 }
 
 .suggestions .suggestions-item {
@@ -80,7 +87,7 @@ body {
   cursor: pointer;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: space-between;;
+  justify-content: space-between;
   border-radius: 12px;
   background: var(--secondary-color);
   transition: 0.3s ease;
@@ -117,7 +124,7 @@ body {
 
 .suggestions .suggestions-item:nth-child(4) span {
   color: #6f42c1;
-} 
+}
 
 /* Chats container styling */
 .container .chats-container {
@@ -230,7 +237,7 @@ body {
   border: none;
   font-size: 1rem;
   padding-left: 24px;
-  color : var(--text-color);
+  color: var(--text-color);
 }
 
 .prompt-form .prompt-input::placeholder {
@@ -247,7 +254,7 @@ body {
   flex-shrink: 0;
   color: var(--text-color);
   background: var(--secondary-color);
-  transition:  0.3s ease;
+  transition: 0.3s ease;
 }
 
 .prompt-wrapper :is(button:hover, .file-icon, #cancel-file-btn) {
@@ -256,7 +263,7 @@ body {
 
 .prompt-form .prompt-actions {
   gap: 5px;
-  margin-right: 7px
+  margin-right: 7px;
 }
 
 .prompt-wrapper .prompt-form :where(.file-upload-wrapper, button, img) {
@@ -286,11 +293,10 @@ body {
   display: none;
 }
 
-.prompt-form .file-upload-wrapper #add-file-btn, 
+.prompt-form .file-upload-wrapper #add-file-btn,
 .prompt-form .file-upload-wrapper.active.img-attached img,
 .prompt-form .file-upload-wrapper.active.file-attached .file-icon,
-.prompt-form .file-upload-wrapper.active:hover
-#cancel-file-btn {
+.prompt-form .file-upload-wrapper.active:hover #cancel-file-btn {
   display: block;
 }
 
@@ -298,12 +304,21 @@ body {
   display: none;
 }
 
-.prompt-form #cancel-file-btn {
+.prompt-form :is(#cancel-file-btn, #stop-response-btn:hover) {
   color: #d62939;
 }
 
 .prompt-form .file-icon {
   color: #1d7efd;
+}
+
+.prompt-form #stop-response-btn,
+body.bot-responding .prompt-form .file-upload-wrapper {
+  display: none;
+}
+
+body.bot-responding .prompt-form #stop-response-btn {
+  display: block;
 }
 
 .prompt-container .disclaimer-text {
