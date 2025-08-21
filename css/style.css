@@ -337,3 +337,24 @@ body.bot-responding .prompt-form #stop-response-btn {
   font-size: 0.9rem;
   color: var(--placeholder-color);
 }
+
+/* Responsive media query code for small screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 0 100px;
+  }
+
+  .app-header :is(.heading, .sub-heading) {
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+
+  .prompt-form .file-upload-wrapper.active #cancel-file-buttonn {
+    opcity: 0;
+  }
+
+  .prompt-wrapper.hide-controls
+    :where(#theme-toggle-button, #delete-chats-button) {
+    display: none;
+  }
+}
