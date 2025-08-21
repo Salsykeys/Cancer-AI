@@ -6,6 +6,7 @@ const promptForm = document.querySelector(".prompt-form");
 const promptInput = promptForm.querySelector(".prompt-input");
 const fileInput = promptForm.querySelector("#file-input");
 const fileUploadWrapper = promptForm.querySelector(".file-upload-wrapper");
+const themeToggle = document.querySelector("#theme-toggle-button");
 
 // API setup
 const API_KEY = `${Config.API_KEY}`;
@@ -115,7 +116,7 @@ const handleFormSubmit = (e) => {
 
   promptInput.value = ""; // Clear the input field
   userData.message = userMessage; // Store user message in userData
-  document.body.classList.add("bot-responding");
+  document.body.classList.add("bot-responding", "chats-active");
   fileUploadWrapper.classList.remove("active", "img-attached", "file-attached");
 
   // Generate user message HTML and add it to the chats container
@@ -189,8 +190,30 @@ document.querySelector("#stop-response-btn").addEventListener("click", () => {
 document.querySelector("#delete-chats-button").addEventListener("click", () => {
   chatHistory.length = 0; // Clear chat history
   chatsContainer.innerHTML = ""; // Clear the chats container
-  document.body.classList.remove("bot-responding");
+  document.body.classList.remove("bot-responding", "chats-active");
 });
+
+// Handle suggestions item click
+document.querySelectorAll(".suggestions-item").forEach(item => {
+  item.addEventListener("click", () => {
+    promptInput.value = item.querySelector(".text").textContent;
+    promptForm.dispatchEvent(new Event("submit")); // Trigger form submission
+    scrollToBottom(); // Scroll to bottom after adding user message
+  })
+})
+
+// Toggle theme between light and dark
+themeToggle.addEventListener("click", () => {
+  const isLightTheme = document.body.classList.toggle("light-theme");
+  localStorage.setItem("themeColor", isLightTheme ? "light_mode" : "dark_mode");
+  themeToggle.textContent = isLightTheme ? "dark_mode" : "light_mode";
+});
+
+// set initial theme based on localStorage
+const isLightTheme = localStorage.getItem("themeColor") === "light_mode";
+document.body.classList.toggle("light-theme", isLightTheme);
+  themeToggle.textContent = isLightTheme ? "dark_mode" : "light_mode";
+
 
 promptForm.addEventListener("submit", handleFormSubmit);
 promptForm.querySelector("#add-file-btn").addEventListener("click", () => {
