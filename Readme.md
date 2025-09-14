@@ -29,7 +29,7 @@ To run this project, follow these simple steps:
 1.  **Clone the repository**:
 
     ```bash
-    git clone [https://github.com/Salsykeys/Cancer-AI.git]
+    git clone https://github.com/Salsykeys/Cancer-AI.git
     ```
 
 2.  **Get an API Key**:
