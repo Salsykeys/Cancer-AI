@@ -8,8 +8,6 @@ const fileInput = promptForm.querySelector("#file-input");
 const fileUploadWrapper = promptForm.querySelector(".file-upload-wrapper");
 const themeToggle = document.querySelector("#theme-toggle-button");
 
-const name = "Salll";
-
 const nameElement = document.querySelector("#name");
 nameElement.textContent = name;
 
